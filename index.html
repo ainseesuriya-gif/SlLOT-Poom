@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slot Kingdom</title>
+
+<style>
+/* CSS ทั้งหมดใส่ตรงนี้ */
+body{
+    margin:0;
+    background:#0b0f1e;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.lobby{
+    padding:30px;
+}
+
+.logo{
+    text-align:center;
+    font-size:42px;
+    font-weight:900;
+    margin-bottom:30px;
+}
+
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.game-card{
+    height:220px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+    background:#1a1f35;
+}
+
+.game-card:hover{
+    transform:translateY(-5px);
+}
+
+.game-info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:20px;
+    background:linear-gradient(transparent,rgba(0,0,0,.9));
+}
+
+.game-name{
+    font-size:24px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="lobby">
+
+    <div class="logo">
+        SLOT KINGDOM
+    </div>
+
+    <div id="gameGrid" class="game-grid"></div>
+
+</div>
+
+<script>
+// JavaScript ทั้งหมดใส่ตรงนี้
+
+const GAMES = [
+{
+    name:"Crystal Kingdom",
+    color:"#7f5af0"
+},
+{
+    name:"Dragon Fortune",
+    color:"#ff8906"
+},
+{
+    name:"Ocean Riches",
+    color:"#3da9fc"
+},
+{
+    name:"Phoenix Rise",
+    color:"#ef4565"
+}
+];
+
+const gameGrid =
+document.getElementById("gameGrid");
+
+GAMES.forEach(game=>{
+
+    const card =
+    document.createElement("div");
+
+    card.className =
+    "game-card";
+
+    card.style.background =
+    game.color;
+
+    card.innerHTML = `
+        <div class="game-info">
+            <div class="game-name">
+                ${game.name}
+            </div>
+        </div>
+    `;
+
+    gameGrid.appendChild(card);
+
+});
+</script>
+
+</body>
+</html>
